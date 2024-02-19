@@ -5,19 +5,18 @@ public class Ex05 {
 	public static void main(String[] args) {
 		char ch;
 		
-		ch = 50;
-		ch = '0' + '1'; // 리터널 연산자 리터널 = > 형변환이 일어나지 않음
-			// 48 + 49
-		System.out.println(ch); //a
+		ch = '0' + '1'; // 리터널 연산자 리터널 => 형변환이 일어나지 않음
+			// 48 + 49 = 97
+		System.out.println(ch); // a
 		
-//		ch = 'A';
-//		ch = ch + 1;
-//		System.out.println(ch); // 컴파일 오류
+		/*
+		ch = 'A';
+		ch = ch + 1; // 컴파일 오류
+		*/
 		
 		ch = 'A' + 10;
-		System.out.println(ch); //K
-		
-		
+		System.out.println(ch); // K
+
 	}
 
 }

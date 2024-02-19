@@ -8,21 +8,17 @@ public class Quiz1 {
 		// 초를 입력 받아 시, 분, 초로 변환
 		Scanner sc = new Scanner(System.in);
 		
-		int a,h, m,s;
+		int a, h, m, s;
 		
-		System.out.print("초를 입력하세요 ? " );
+		System.out.print("초를 입력하세요 ? ");
 		a = sc.nextInt();
 		
-		
 		h = a / 3600;
-		m =  (a / 60) % 60 ;
-		s = a % 60;   
+		m = (a / 60) % 60;		
+		s = a % 60;
 		
-		
-		System.out.print(h +"시"+ m +"분"+ s + "초");
+		System.out.println(h + ", " + m + ", " + s);
 		
 		sc.close();
-
 	}
-
 }

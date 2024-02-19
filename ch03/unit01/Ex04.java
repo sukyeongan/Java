@@ -9,13 +9,13 @@ public class Ex04 {
 		a = 3;
 		b = 2;
 		
-		c = a/b +a/b;
+		c = a/b + a/b;
 		System.out.println(c); // 2.0
 		
-		c = (double)(a/b) +a/b;
+		c = (double)(a/b) + a/b;
 		System.out.println(c); // 2.0
-		
-		c = (double)a/b +a/b;
+
+		c = (double)a/b + a/b;
 		System.out.println(c); // 2.5
 		
 		c = 3.7 % 1.3;
@@ -23,8 +23,6 @@ public class Ex04 {
 		
 		c = 'A' + 10;
 		System.out.println(c); // 75.0
-		
-
 	}
 
 }
