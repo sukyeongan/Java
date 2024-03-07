@@ -1,0 +1,212 @@
+※ Collection 주요 인터페이스 및 클래스
+    ● List
+      - 개요
+        : 순서가 있다.
+        : 배열과 유사한 구조
+        : 가변 길이(저장 공간이 부족하면 자동으로 공간이 늘어남)
+        : 중복적인 요소도 추가 가능
+        : 중간에 데이터를 추가하거나 삭제도 가능
+        : 주요 구현 클래스 - ArrayList, Vector, LinkedList, Stack 등
+
+      - ArrayList
+        : List 인터페이스 구현 클래스
+        : 검색시 속도가 빠름
+        : 동기화 되지 않음(멀티 스레드에서 안전하지 않음)
+
+      - LinkedList
+        : List 인터페이스 구현 클래스
+        : 검색은 느림
+        : 앞에서 추가하고 뒤에서 삭제가 빈번한 경우 빠름
+        : 앞뒤 아무데서나 추가 삭제 가 빈번한 경우 
+        : 중간에 삽입 삭제시에는 속도가 현저히 떨어짐. LinkedList 사용하지 말것
+        : 동기화 되지 않음(멀티 스레드에서 안전하지 않음)
+
+      - Vector
+        : List 인터페이스 구현 클래스
+        : 동기화 지원. 다중 스레드 환경에서 안전
+
+      - STACK
+        : LIFO(Last In First Out) 구조
+        : Vector 클래스를 상속 받음
+
+      - List 주요 메소드
+         add(E e) : 요소 추가
+         add(int index, E e) : 해당 인덱스에 요소 추가
+         size() : 요소의 개수
+         get(int index) : 인덱스의 요소 반환
+         remove(int index) : 인덱스의 요소 지우기
+         remove(Object o) : 해당 객체 지우기
+         clear() : 모든 요소 제거
+         indexOf(E e) : 해당 요소의 인덱스를 반환. 없으면 -1		
+
+
+    ● 배열과 ArrayList의 차이점
+       - 배열
+         : 배열 요소의 크기를 변경할 수 없다.
+         : 배열 중간에 데이터를 삽입 시에 기존 데이터를 덮어쓰기 때문에 기존의 데이터값은 사라진다. 
+       - ArrayList
+         : 가변길이의 자료구조로 데이터의 검색에 유리하며, 추가/삭제에는 성능을 고려해야 한다.
+         : 리스트의 처음, 끝, 중간에 엘리먼트를 추가/삭제하는 기능을 제공한다.
+
+
+    ● Set
+      - 개요
+         : 순서를 유지하지 않음
+         : 중복을 허용하지 않음
+         : null은 하나만 등록 가능
+         : 구현 클래스 - HashSet, LinkedHashSet, TreeSet
+
+      - HashSet
+         : Set 인터페이스 구현 클래스
+         : 순서를 유지하지 않음, 중복을 허용하지 않음
+
+      - LinkedHashSet
+         : HashSet 하위 클래스
+         : 중복 하용하지 않음
+         : 순서 유지
+
+      - TreeSet
+         : SortedSet 인터페이스 구현
+         : 정렬된 순서에 의해 반복
+         : 중복 허용 안함
+         : Comparable 인터페이스 구현 클래스만 추가 가능 
+
+      - Set 주요 메소드
+        add(E e) : 요소 추가
+        size() : 요소의 개수
+        get(int index) : 인덱스의 요소 반환
+        remove(int index) : 인덱스의 요소 지우기
+        remove(Object o) : 해당 객체 지우기
+        clear() : 모든 요소 제거
+
+
+    ● Map
+      - 개요
+        : key 값과 value값의 형식으로 저장
+        : key는 Set으로 중복을 허용하지 않는다. 중복적인 키를 삽입할 경우 이전의 데이터를 덮어 쓴다.
+        : Iterator가 없다.
+        : 주요 구현클래스 : Hashtable, HashMap, LinkedHashMap, TreeMap
+
+      - Hashtable
+        : 동기화지원
+
+      - HashMap
+        : 동기화를 지원하지 않음
+
+      - LinkedHashMap
+        : 등록 순으로 키 순서 유지
+
+      - TreeMap
+        : 키 순서로 정렬
+        : 키는 Comparable 인터페이스 구현 클래스만 가능
+
+      - Map 주요 메소드
+        put(키, 값) : Map에 요소 추가
+        get(키) : 키에 해당하는 Map 요소 반환
+        keySet() : 키에 대한 Set 객체 반환
+        remove(키) : 해당 요소 제거
+        clear() : 모든 요소 제거
+        size() : 키의 개수를 리턴
+        containsKey(E e) : 해당 키가 존재하는 true를 반환
+
+
+    ● Properties
+        : Hashtable을 상속 받음
+        : 키와 값이 모두 문자열(String)만 가능
+        : 주요 메소드
+          setProperty("키", "값") : Properties에 값 저장
+          getProperty("키") : Properties의 키에 대한 값 반환
+
+
+       ------------------------------------------
+       // -- List 사용 예
+       - ScoreVO
+         private String hak;
+         private String name;
+         private int kor, eng, mat;
+         // getter / setter
+         public int getTot() {
+             return kor+eng+mat;
+         }
+
+       - 객체 생성
+          List<ScoreVO> list = new ArrayList<>();
+
+       - 추가
+          ScoreVO vo=new ScoreVO();
+          vo.sethak("1111");
+          vo.setName("김자바");
+              :
+          list.add(vo);
+
+       - 특정 인덱스 값 가져오기
+          ScoreVO vo = list.get(0);
+
+       - 전체 리스트 - 1
+         for(ScoreVO vo : list) {
+             :
+         }
+
+       - 전체 리스트 - 2
+         Iterator<ScoreVO>it=list.iterator();
+         while(it.hasNext()) {
+             ScoreVO vo=it.next();
+               :
+         }
+
+       - 전체 리스트 - 3
+         for(int i=0; i<list.size(); i++) {
+             ScoreVO vo=list.get(i);
+                   :
+         }
+
+       - 정렬(문자열)
+         Comparator<ScoreVO> comp=new Comparator<ScoreVO>(){
+              @Override
+              public int compare(ScoreVO o1, ScoreVO o2) {
+                  return o1.getName().compareTo(o2.getName()); // 이름 오름차순
+              }
+          };
+          Collections.sort(list, comp);
+
+      - 정렬(숫자)
+         Comparator<ScoreVO> comp=new Comparator<ScoreVO>(){
+             @Override
+             public int compare(ScoreVO o1, ScoreVO o2) {
+                 // return o1.getTot() - o2.getTot();  // 오름차순
+                 return -(o1.getTot() - o2.getTot());  // 내림차순
+             }
+         };
+         Collections.sort(list, comp);
+
+
+       ------------------------------------------
+       // -- Map 사용 예
+       - ScoreVO
+         private String name;
+         private int kor, eng, mat;
+         // getter / setter
+         public int getTot() {
+             return kor+eng+mat;
+         }
+
+      - HashMap 객체 생성<키, 값>
+        HashMap<String, ScoreVO> map=new HashMap<String, ScoreVO>();
+
+      - 추가
+        String hak="1111"; // 학번
+        ScoreVO vo=new ScoreVO();
+        vo.setName("자바다"); // 이름
+            :
+        map.put(hak, vo); // 저장(키, 값)
+
+      - 값 가져오기
+        ScoreVO vo=map.get("학번"); // 키의 데이터 리턴. 없으면 null
+
+      -  전체리스트
+         Iterator<String>it=map.keySet().iterator(); // 키가 String 인 경우
+         while(it.hasNext()) {
+            String key=it.next(); // 키
+            ScoreVO vo=map.get(key); // 값
+                :
+          }
